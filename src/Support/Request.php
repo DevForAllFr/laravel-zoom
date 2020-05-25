@@ -40,7 +40,7 @@ class Request
         $token = [
             'iss' => $search_option->zoom_id, //Test commit
             // The benefit of JWT is expiry tokens, we'll set this one to expire in 1 minute
-            'exp' => time() + 6000,
+            'exp' => time() + 6000, //60
         ];
 
 /*         return JWT::encode($token, config('zoom.api_secret'));
