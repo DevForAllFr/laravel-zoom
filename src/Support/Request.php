@@ -38,7 +38,7 @@ class Request
         ]; */
 
         $token = [
-            'iss' => 'XXXX',//$search_option->zoom_id,
+            'iss' => $search_option->zoom_id,
             // The benefit of JWT is expiry tokens, we'll set this one to expire in 1 minute
             'exp' => time() + 60,
         ];
