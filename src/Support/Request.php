@@ -6,6 +6,8 @@ use Exception;
 use Firebase\JWT\JWT;
 use GuzzleHttp\Client;
 
+use App\Searchoption;
+
 class Request
 {
     protected $client;
@@ -27,13 +29,24 @@ class Request
 
     public function generateJWT()
     {
-        $token = [
+        $search_option = Searchoption::first();
+
+       /*  $token = [
             'iss' => config('zoom.api_key'),
+            // The benefit of JWT is expiry tokens, we'll set this one to expire in 1 minute
+            'exp' => time() + 60,
+        ]; */
+
+        $token = [
+            'iss' => $search_option->zoom_id,
             // The benefit of JWT is expiry tokens, we'll set this one to expire in 1 minute
             'exp' => time() + 60,
         ];
 
-        return JWT::encode($token, config('zoom.api_secret'));
+/*         return JWT::encode($token, config('zoom.api_secret'));
+ */    
+        return JWT::encode($token, $search_option->zoom_key);
+
     }
 
     public function get($end_point, $query = '')
