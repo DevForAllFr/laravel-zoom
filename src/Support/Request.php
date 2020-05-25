@@ -29,6 +29,8 @@ class Request
 
     public function generateJWT()
     {
+        //Branch JWTANDTTL
+        
         $search_option = Searchoption::first();
 
        /*  $token = [
